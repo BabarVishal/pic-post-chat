@@ -12,7 +12,7 @@ const port = 3000;
 app.use(bodyParser.json({ limit: '100mb' }));
 app.use(cors());
 
-const uri = "mongodb+srv://lakshinpathak2810:nirma123@cluster0.r7ltlis.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb://127.0.0.1:27017/Picpost"; // Removed the leading space
 
 async function connect() {
     try {
@@ -36,7 +36,7 @@ app.use(express.json());
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');
 const profileRoutes = require('./routes/profile');
-const chatRoutes =require('./routes/message_chat');
+const chatRoutes = require('./routes/message_chat');
 
 // Using routes
 app.use('/api/auth', authRoutes);
@@ -69,7 +69,6 @@ app.get('/setting.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'setting.html'));
 });
 
-
 app.get('/bio.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'bio.html'));
 });
@@ -82,16 +81,13 @@ app.get('/create_admin.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'create_admin.html'));
 });
 
-
 app.get('/message.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'message.html'));
 });
 
-
 app.get('/followers_following.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'followers_following.html'));
 });
-
 
 app.get('/bookmark.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'bookmark.html'));
